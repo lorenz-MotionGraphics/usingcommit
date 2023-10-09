@@ -1,0 +1,53 @@
+<div class="modal fade" id="feedback" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Feedback</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="height: 100vh;">
+                    <form action="#" class="form-container" onsubmit="submitForm(event)">
+                    <h1>Send Us Feedback</h1>
+                    <label for="msg" title="Please provide your email for us to contact you:">
+                    <b>Your feedback is noted and will be read by us.</b>
+                    </label>
+                    <textarea placeholder="Please add your feedback and email..." name="msg" id="feedbackTextarea" required></textarea>
+                <button type="submit" class="btn">Send</button>
+            </form>
+        <script>
+        function submitForm(event) {
+            event.preventDefault(); const feedback = document.getElementById('feedbackTextarea').value;
+            const formData = new FormData(); formData.append('msg', feedback);
+            const xhr = new XMLHttpRequest(); xhr.open('POST', 'storeFeedback.php');
+            xhr.send(formData); alert('Thank you for your feedback!'); }
+        </script>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <header>
+        <div class="profile-container">
+            <div class="profile-image">
+                <img src="profile23.jpg" alt="Profile Image">
+            </div>
+        </div>
+        <h1 class="classh1">MCJ 1992</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#myModal">About Us</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#promos">Promos</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#product">Products</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#myModal01">Search Available Offers</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#contactusModal">Contact Us</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#howtobuyModal">How to Buy</a></li>
+            <li><a href="#">Career</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#feedback">Give Feedback</a></li>
+        </ul>
+    </nav>
