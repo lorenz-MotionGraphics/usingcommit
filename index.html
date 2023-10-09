@@ -1,0 +1,65 @@
+<!-- HTML form -->
+<form id="myForm">
+     <input type="text" id="nameInput" placeholder="Name">
+     <input type="number" id="ageInput" placeholder="Age">
+     <input type="email" id="emailInput" placeholder="Email">
+     <button type="submit">Submit</button>
+   </form>
+   
+   <!-- JavaScript code -->
+   <script>
+     // Called when the form is submitted
+     function submitData(event) {
+       event.preventDefault(); // Prevent form submission
+   
+       // Get form input values
+       var name = document.getElementById("nameInput").value;
+       var age = document.getElementById("ageInput").value;
+       var email = document.getElementById("emailInput").value;
+   
+       // Create the JSON data object
+       var data = {
+         name: name,
+         age: age,
+         email: email
+       };
+   
+       // Update data.json file with the new data using fetch()
+       fetch("data.json", {
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json"
+         },
+         body: JSON.stringify(data)
+       })
+       .then(response => {
+         if (response.ok) {
+           console.log("Data updated successfully");
+           displayData();
+         } else {
+           console.log("Failed to update data");
+         }
+       })
+       .catch(error => {
+         console.log("Error:", error);
+       });
+     }
+   
+     // Retrieve and display stored data from data.json file
+     function displayData() {
+       fetch("data.json")
+         .then(response => response.json())
+         .then(data => {
+           // Use retrieved data as needed
+           console.log(data.name);
+           console.log(data.age);
+           console.log(data.email);
+         })
+         .catch(error => {
+           console.log("Error:", error);
+         });
+     }
+   
+     // Attach event listener to the form submission event
+     document.getElementById("myForm").addEventListener("submit", submitData);
+   </script>
